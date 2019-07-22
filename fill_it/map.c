@@ -6,7 +6,7 @@
 /*   By: ahaloua <ahaloua@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/21 15:58:10 by ahaloua           #+#    #+#             */
-/*   Updated: 2019/07/22 15:21:57 by ahaloua          ###   ########.fr       */
+/*   Updated: 2019/07/22 22:47:12 by ahaloua          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	ft_putmap(char **map)
 
 void	ft_creat_map(char ***map, int size)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	if (*map != NULL)

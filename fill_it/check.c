@@ -6,7 +6,7 @@
 /*   By: ahaloua <ahaloua@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/21 16:27:46 by ahaloua           #+#    #+#             */
-/*   Updated: 2019/07/22 15:22:59 by ahaloua          ###   ########.fr       */
+/*   Updated: 2019/07/22 23:03:58 by ahaloua          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int		ft_istertris(const char *str)
 {
-	size_t	hashs;
-	size_t	dots;
-	int		i;
+	int	hashs;
+	int	dots;
+	int	i;
 
 	hashs = 0;
 	dots = 0;
@@ -37,22 +37,22 @@ int		ft_istertris(const char *str)
 int		check_conn(const char *str)
 {
 	int i;
-	int count;
+	int j;
 
 	i = 0;
-	count = 0;
+	j = 0;
 	while (str[i])
 	{
 		if (str[i] == '#')
 		{
 			if (i < 19 && str[i + 1] == '#')
-				count++;
+				j += 1;
 			if (i < 14 && str[i + 5] == '#')
-				count++;
+				j += 1;
 		}
-		i++;
+		i += 1;
 	}
-	if (count == 3 || count == 4)
+	if (j == 3 || j == 4)
 		return (1);
 	return (0);
 }

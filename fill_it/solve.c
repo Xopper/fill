@@ -6,7 +6,7 @@
 /*   By: ahaloua <ahaloua@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/21 15:55:27 by ahaloua           #+#    #+#             */
-/*   Updated: 2019/07/22 19:32:18 by ahaloua          ###   ########.fr       */
+/*   Updated: 2019/07/22 23:33:30 by ahaloua          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,48 +14,46 @@
 
 int		ft_is_safe(char **map, t_tetrim *one, t_cord *var, int size)
 {
-	int i;
-	int m;
-	int n;
+	int		i;
+	t_cord	v;
 
 	i = -1;
 	while (++i < 4)
 	{
-		m = one->hashtab[i].cl + var->cl;
-		n = one->hashtab[i].ln + var->ln;
-		if (m >= size || m < 0)
+		v.cl = one->hashtab[i].cl + var->cl;
+		v.ln = one->hashtab[i].ln + var->ln;
+		if (v.cl >= size || v.cl < 0)
 			return (0);
-		if (n >= size || n < 0)
+		if (v.ln >= size || v.ln < 0)
 			return (0);
-		if (map[n][m] != '.')
+		if (map[v.ln][v.cl] != '.')
 			return (0);
 	}
 	i = -1;
 	while (++i < 4)
 	{
-		m = one->hashtab[i].cl + var->cl;
-		n = one->hashtab[i].ln + var->ln;
-		map[n][m] = one->id;
+		v.cl = one->hashtab[i].cl + var->cl;
+		v.ln = one->hashtab[i].ln + var->ln;
+		map[v.ln][v.cl] = one->id;
 	}
 	return (1);
 }
 
 void	ft_rm_tetri(char **map, char c, int size)
 {
-	int i;
-	int j;
+	t_cord var;
 
-	i = 0;
-	while (i < size)
+	var.cl = 0;
+	while (var.cl < size)
 	{
-		j = 0;
-		while (j < size)
+		var.ln = 0;
+		while (var.ln < size)
 		{
-			if (map[i][j] == c)
-				map[i][j] = '.';
-			j += 1;
+			if (map[var.cl][var.ln] == c)
+				map[var.cl][var.ln] = '.';
+			var.ln += 1;
 		}
-		i += 1;
+		var.cl += 1;
 	}
 }
 

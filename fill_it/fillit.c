@@ -6,7 +6,7 @@
 /*   By: ahaloua <ahaloua@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/27 16:45:31 by ahaloua           #+#    #+#             */
-/*   Updated: 2019/07/22 20:06:46 by ahaloua          ###   ########.fr       */
+/*   Updated: 2019/07/22 23:32:29 by ahaloua          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,55 +14,52 @@
 
 void	ft_shift(t_tetrim *one)
 {
-	int hid;
-	int count;
-	int mincl;
-	int minln;
+	int		hid;
+	t_cord	min;
 
 	hid = 0;
-	count = 0;
-	mincl = one->hashtab[hid].cl;
-	minln = one->hashtab[hid].ln;
+	min.cl = one->hashtab[hid].cl;
+	min.ln = one->hashtab[hid].ln;
 	while (++hid < 3)
 	{
-		if (mincl >= one->hashtab[hid].cl)
-			mincl = one->hashtab[hid].cl;
-		if (minln >= one->hashtab[hid].ln)
-			minln = (*one).hashtab[hid].ln;
+		if (min.cl >= one->hashtab[hid].cl)
+			min.cl = one->hashtab[hid].cl;
+		if (min.ln >= one->hashtab[hid].ln)
+			min.ln = (*one).hashtab[hid].ln;
 	}
-	while (count < 4)
+	hid = 0;
+	while (hid < 4)
 	{
-		one->hashtab[count].cl -= mincl;
-		one->hashtab[count].ln -= minln;
-		count++;
+		one->hashtab[hid].cl -= min.cl;
+		one->hashtab[hid].ln -= min.ln;
+		hid += 1;
 	}
 }
 
 void	ft_stock_hashs(char *buff, t_tetrim *one)
 {
-	int i;
-	int hid;
-	int x;
-	int y;
+	int		i;
+	int		hid;
+	t_cord	var;
 
 	i = 0;
-	y = 0;
 	hid = 0;
+	var.ln = 0;
 	while (buff[i])
 	{
-		x = 0;
-		while (x < 5 && buff[i])
+		var.cl = 0;
+		while (var.cl < 5 && buff[i])
 		{
 			if (buff[i] == '#')
 			{
-				one->hashtab[hid].cl = x;
-				one->hashtab[hid].ln = y;
-				hid++;
+				one->hashtab[hid].cl = var.cl;
+				one->hashtab[hid].ln = var.ln;
+				hid += 1;
 			}
-			x++;
-			i++;
+			var.cl += 1;
+			i += 1;
 		}
-		y++;
+		var.ln += 1;
 	}
 }
 
@@ -87,7 +84,7 @@ int		ft_read_tetris(int fd, t_tetris *tab)
 			tab->multi_tab[id].id = 'A' + id;
 			ft_stock_hashs(buf, &tab->multi_tab[id]);
 			ft_shift(&tab->multi_tab[id]);
-			id++;
+			id += 1;
 		}
 	}
 	tab->multi_tab[id].id = 0;

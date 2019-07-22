@@ -6,7 +6,7 @@
 /*   By: ahaloua <ahaloua@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/27 16:44:40 by ahaloua           #+#    #+#             */
-/*   Updated: 2019/07/22 17:30:45 by ahaloua          ###   ########.fr       */
+/*   Updated: 2019/07/22 23:22:47 by ahaloua          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ typedef struct	s_tetrim
 typedef struct	s_tetris
 {
 	t_tetrim	multi_tab[27];
-	int			size;
 }				t_tetris;
 
 int				ft_read_tetris(int fd, t_tetris *tab);
