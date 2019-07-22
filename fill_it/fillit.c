@@ -6,7 +6,7 @@
 /*   By: ahaloua <ahaloua@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/27 16:45:31 by ahaloua           #+#    #+#             */
-/*   Updated: 2019/07/22 15:22:52 by ahaloua          ###   ########.fr       */
+/*   Updated: 2019/07/22 20:06:46 by ahaloua          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int		ft_read_tetris(int fd, t_tetris *tab)
 		buf[ret] = '\0';
 		if (id == 26 || !ft_check_inlines(buf, ret) || !ft_istertris(buf)
 		|| !check_conn(buf))
-			ft_error();
+			return (0);
 		else
 		{
 			tab->multi_tab[id].id = 'A' + id;
